@@ -40,31 +40,31 @@ namespace AgileWorks.Controllers
         public ActionResult Create(Appeals appeals)
         {
             var now = DateTime.Now;
-            try
+            //try
+            //{
+            using (AgileWorksWebAppealsDBEntities agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities())
             {
-                using (AgileWorksWebAppealsDBEntities agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities())
+                if (ModelState.IsValid && appeals.DeadLine_DateTime >= now)
                 {
-                    if (ModelState.IsValid && appeals.DeadLine_DateTime >= now)
-                    {
-                        appeals.Entry_DateTime = DateTime.Now;
+                    appeals.Entry_DateTime = DateTime.Now;
 
-                        agileWorksDatabaseEntities.Appeals.Add(appeals);
-                        agileWorksDatabaseEntities.SaveChanges();
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("DeadLine_DateTime", "The deadline is in past!");
-                        return View(appeals);
-                    }
+                    agileWorksDatabaseEntities.Appeals.Add(appeals);
+                    agileWorksDatabaseEntities.SaveChanges();
                 }
+                else
+                {
+                    ModelState.AddModelError("DeadLine_DateTime", "The deadline is in past!");
+                    return View(appeals);
+                }
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: Appeals/Edit/5
         public ActionResult Edit(int id)

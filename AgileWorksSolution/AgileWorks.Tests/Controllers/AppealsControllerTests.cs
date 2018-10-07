@@ -17,92 +17,79 @@ namespace AgileWorks.Controllers.Tests
         [TestMethod()]
         public void IndexTest()
         {
+            Appeals appeals = new Appeals();
             AppealsController appealsController = new AppealsController();
             ViewResult viewResult = appealsController.Index() as ViewResult;
-            Assert.IsNotNull(viewResult);
-            Assert.IsInstanceOfType(viewResult, typeof(ViewResult));
-            Assert.AreEqual(string.Empty, viewResult.ViewName);
+
+            Assert.IsNotNull(viewResult.Model);
+            Assert.IsInstanceOfType(viewResult.Model, typeof(List<Appeals>));
 
         }
 
         [TestMethod()]
         public void CreateTest()
         {
+            AgileWorksWebAppealsDBEntities agileWorksWebAppealsDBEntities = new AgileWorksWebAppealsDBEntities();
+
             Appeals appeals = new Appeals();
-            appeals.Appeal_Id = 500;
-            appeals.DeadLine_DateTime = DateTime.Now;
+            appeals.DeadLine_DateTime = new DateTime(2020, 1, 19);
             appeals.Entry_DateTime = DateTime.Now;
-            appeals.Description = "Test123456";
+            appeals.Description = "Test123456123456789";
 
             AppealsController appealsController = new AppealsController();
             var result = appealsController.Create(appeals);
-            Assert.AreEqual(appeals.Description, "Test123456");
-            Assert.IsNotNull(appeals.ToString());
+            var ifExists = agileWorksWebAppealsDBEntities.Appeals.Where(x => x.Appeal_Id == appeals.Appeal_Id).FirstOrDefault();
 
-
-
-
+            Assert.IsNotNull(ifExists);
+            Assert.AreEqual(appeals.Description, ifExists.Description);
         }
+
 
         [TestMethod()]
         public void CreateTest2()
         {
-            var today = DateTime.Now;
-            List<Appeals> allAppeals = new List<Appeals>();
-            List<Appeals> correctDateTimeAppeals = new List<Appeals>();
+            AgileWorksWebAppealsDBEntities agileWorksWebAppealsDBEntities = new AgileWorksWebAppealsDBEntities();
+
             Appeals appeals = new Appeals();
-            appeals.Appeal_Id = 590;
-            appeals.DeadLine_DateTime = new DateTime(2020, 1, 19);
+            appeals.DeadLine_DateTime = new DateTime(1996, 1, 19);
             appeals.Entry_DateTime = DateTime.Now;
-            appeals.Description = "Test123456";
-
-            Appeals appeals2 = new Appeals();
-            appeals2.Appeal_Id = 501;
-            appeals2.DeadLine_DateTime = new DateTime(2017, 1, 19);
-            appeals2.Entry_DateTime = DateTime.Now;
-            appeals2.Description = "Testimine";
-
+            appeals.Description = "Test123456123456789";
 
             AppealsController appealsController = new AppealsController();
             var result = appealsController.Create(appeals);
-            var result2 = appealsController.Create(appeals2);
-            allAppeals.Add(appeals);
-            allAppeals.Add(appeals2);
+            var ifExists = agileWorksWebAppealsDBEntities.Appeals.Where(x => x.Appeal_Id == appeals.Appeal_Id).FirstOrDefault();
 
-            foreach (var item in allAppeals)
-            {
-                if (item.DeadLine_DateTime > today)
-                {
-                    correctDateTimeAppeals.Add(item);
-                }
-            }
-
-            Assert.AreEqual(appeals.Description, "Test123456");
-            Assert.AreEqual(appeals2.Description, "Testimine");
-            Assert.IsNotNull(appeals.ToString());
-            CollectionAssert.Contains(correctDateTimeAppeals, appeals);
-            CollectionAssert.DoesNotContain(correctDateTimeAppeals, appeals2);
-
-
-
-
+            Assert.IsNull(ifExists);
 
         }
+
         [TestMethod()]
         public void DeleteTest()
         {
+            AgileWorksWebAppealsDBEntities agileWorksWebAppealsDBEntities = new AgileWorksWebAppealsDBEntities();
             Appeals appeals = new Appeals();
-            appeals.Appeal_Id = 191;
-            appeals.DeadLine_DateTime = DateTime.Now;
+            appeals.DeadLine_DateTime = new DateTime(2019, 1, 19);
             appeals.Entry_DateTime = DateTime.Now;
             appeals.Description = "Test123456Delete";
 
             AppealsController appealsController = new AppealsController();
 
+            agileWorksWebAppealsDBEntities.Appeals.Add(appeals);
+            agileWorksWebAppealsDBEntities.SaveChanges();
 
-            var result = appealsController.Delete(191);
-            Assert.AreNotEqual(appeals.Appeal_Id, null);
+            var ifExists = agileWorksWebAppealsDBEntities.Appeals.Where(x => x.Appeal_Id == appeals.Appeal_Id).FirstOrDefault();
+
+            Assert.IsNotNull(ifExists);
+
+            var result2 = appealsController.Delete(ifExists.Appeal_Id, new FormCollection());
+
+
+            var isDeleted = agileWorksWebAppealsDBEntities.Appeals.Where(x => x.Appeal_Id == ifExists.Appeal_Id).FirstOrDefault();
+
+            Assert.IsNull(isDeleted);
+
+
         }
 
-}
+    }
 }
