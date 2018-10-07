@@ -11,12 +11,21 @@ namespace AgileWorks.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Appeals
     {
+        [Required]
         public int Appeal_Id { get; set; }
+        [Required]
+        [DisplayName("Appeal description")]
         public string Description { get; set; }
+        [Required]
+        [DisplayName("Appeal Entry Time")]
         public System.DateTime Entry_DateTime { get; set; }
+        [Required]
+        [DisplayName("Appeal Deadline")]
         public System.DateTime DeadLine_DateTime { get; set; }
     }
 }

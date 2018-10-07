@@ -15,7 +15,7 @@ namespace AgileWorks.Controllers
             var now = DateTime.Now;
             var oneHour = DateTime.Now.AddHours(+1);
 
-            using (AgileWorksWebAppealsDBEntities2 entities = new AgileWorksWebAppealsDBEntities2())
+            using (AgileWorksWebAppealsDBEntities entities = new AgileWorksWebAppealsDBEntities())
             {
                 appealsList = entities.Appeals.ToList();
 
@@ -42,7 +42,7 @@ namespace AgileWorks.Controllers
             var now = DateTime.Now;
             try
             {
-                using (AgileWorksWebAppealsDBEntities2 agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities2())
+                using (AgileWorksWebAppealsDBEntities agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities())
                 {
                     if (ModelState.IsValid && appeals.DeadLine_DateTime >= now)
                     {
@@ -91,7 +91,7 @@ namespace AgileWorks.Controllers
         // GET: Appeals/Delete/5
         public ActionResult Delete(int id)
         {
-            using (AgileWorksWebAppealsDBEntities2 agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities2())
+            using (AgileWorksWebAppealsDBEntities agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities())
             {
 
                 return View(agileWorksDatabaseEntities.Appeals.Where(x => x.Appeal_Id == id).FirstOrDefault());
@@ -105,7 +105,7 @@ namespace AgileWorks.Controllers
         {
             try
             {
-                using (AgileWorksWebAppealsDBEntities2 agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities2())
+                using (AgileWorksWebAppealsDBEntities agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities())
                 {
                     Appeals appeal = agileWorksDatabaseEntities.Appeals.Where(x => x.Appeal_Id == id).FirstOrDefault();
                     agileWorksDatabaseEntities.Appeals.Remove(appeal);

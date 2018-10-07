@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AgileWorksWebAppealsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AgileWorksWebAppealsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Appeals">
           <Key>
             <PropertyRef Name="Appeal_Id" />
@@ -17,7 +17,8 @@
         <EntityContainer Name="AgileWorksWebAppealsDBModelStoreContainer">
           <EntitySet Name="Appeals" EntityType="Self.Appeals" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AgileWorksWebAppealsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -30,7 +31,7 @@
           <Property Name="Entry_DateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeadLine_DateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityContainer Name="AgileWorksWebAppealsDBEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AgileWorksWebAppealsDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Appeals" EntityType="Self.Appeals" />
         </EntityContainer>
       </Schema>
@@ -38,7 +39,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AgileWorksWebAppealsDBModelStoreContainer" CdmEntityContainer="AgileWorksWebAppealsDBEntities2">
+        <EntityContainerMapping StorageEntityContainer="AgileWorksWebAppealsDBModelStoreContainer" CdmEntityContainer="AgileWorksWebAppealsDBEntities">
           <EntitySetMapping Name="Appeals">
             <EntityTypeMapping TypeName="AgileWorksWebAppealsDBModel.Appeals">
               <MappingFragment StoreEntitySet="Appeals">
