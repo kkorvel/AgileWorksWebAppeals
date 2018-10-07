@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AgileWorks.Models.Appeals>
+<link href="~/Content/appeals.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Appeals overview</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Entry_DateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeadLine_DateTime)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        var now = DateTime.Now;
+        var oneHour = DateTime.Now.AddHours(+1);
+        string color;
+        if (item.DeadLine_DateTime >= now && item.DeadLine_DateTime <= oneHour || item.DeadLine_DateTime < now)
+        {
+
+
+            color = "red";
+
+        }
+        else
+        {
+
+            color = "black";
+        }
+        <tr>
+            <td style="color: @color">
+                @Html.DisplayFor(modelItem => item.Description, new { htmlAttributes = new { @class = color } })
+            </td>
+            <td style="color: @color">
+                @Html.DisplayFor(modelItem => item.Entry_DateTime, new { htmlAttributes = new { @class = color } })
+            </td>
+            <td style="color: @color">
+                @Html.DisplayFor(modelItem => item.DeadLine_DateTime, new { htmlAttributes = new { @class = color } })
+            </td>
+            <td>
+                
+                @Html.ActionLink("Mark as resolved appeal", "Delete", new { id = item.Appeal_Id })
+            </td>
+        </tr>
+    }
+
+</table>

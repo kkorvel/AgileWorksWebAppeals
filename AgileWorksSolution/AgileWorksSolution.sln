@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileWorks", "AgileWorks\AgileWorks.csproj", "{CCBAD41D-3837-4644-A80E-3E7FAE1032AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileWorks.Tests", "AgileWorks.Tests\AgileWorks.Tests.csproj", "{F6BB841D-ABCD-43C0-8633-83E1A4BCDD91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCBAD41D-3837-4644-A80E-3E7FAE1032AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCBAD41D-3837-4644-A80E-3E7FAE1032AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCBAD41D-3837-4644-A80E-3E7FAE1032AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCBAD41D-3837-4644-A80E-3E7FAE1032AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6BB841D-ABCD-43C0-8633-83E1A4BCDD91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6BB841D-ABCD-43C0-8633-83E1A4BCDD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6BB841D-ABCD-43C0-8633-83E1A4BCDD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6BB841D-ABCD-43C0-8633-83E1A4BCDD91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEC4A5B4-1F7F-4198-BD56-B6ED33A76638}
+	EndGlobalSection
+EndGlobal
