@@ -13,20 +13,7 @@ namespace AgileWorks.Controllers.Tests
     [TestClass()]
     public class AppealsControllerTests
     {
-        //[TestMethod()]
-        //public void IndexTest()
-        //{
-        //    AppealsController appealsController = new AppealsController();
-        //    ViewResult viewResult = appealsController.Index() as ViewResult;
-        //    Assert.IsNotNull(viewResult);
 
-        //    Assert.IsInstanceOfType(viewResult, typeof(ViewResult));
-        //    Assert.AreEqual(string.Empty, viewResult.ViewName);
-        //    //Assert.AreEqual("Index", viewResult.ViewName);
-        //    //var controller = new AppealsController();
-        //    //var result = controller.Index() as ViewResult;
-        //    //Assert.AreEqual("Index", result.ViewName);
-        //}
         [TestMethod()]
         public void IndexTest()
         {
@@ -39,7 +26,7 @@ namespace AgileWorks.Controllers.Tests
         }
 
         [TestMethod()]
-        public void CreateTest1()
+        public void CreateTest()
         {
             Appeals appeals = new Appeals();
             appeals.Appeal_Id = 500;
@@ -60,61 +47,18 @@ namespace AgileWorks.Controllers.Tests
         [TestMethod()]
         public void DeleteTest()
         {
-            Assert.Fail();
+            Appeals appeals = new Appeals();
+            appeals.Appeal_Id = 191;
+            appeals.DeadLine_DateTime = DateTime.Now;
+            appeals.Entry_DateTime = DateTime.Now;
+            appeals.Description = "Test123456Delete";
+
+            AppealsController appealsController = new AppealsController();
+
+
+            var result = appealsController.Delete(191);
+            Assert.AreNotEqual(appeals.Appeal_Id, null);
         }
 
-       
-
-
-        //[TestMethod()]
-        //public void DeleteTest1()
-        //{
-
-
-        //    Appeals appeals = new Appeals();
-        //    appeals.Appeal_Id = 191;
-        //    appeals.DeadLine_DateTime = DateTime.Now;
-        //    appeals.Entry_DateTime = DateTime.Now;
-        //    appeals.Description = "Test123456Delete";
-
-        //    AppealsController appealsController = new AppealsController();
-
-
-        //    var result = appealsController.Delete(191);
-        //    Assert.AreNotEqual(appeals.Appeal_Id, null);
-
-
-        //}
-
-        //[TestMethod()]
-        //public void IndexTest()
-        //{
-        //    AppealsController appealsController = new AppealsController();
-
-
-        //    ViewResult viewResult = appealsController.Index() as ViewResult;
-        //    Assert.IsNotNull(viewResult);
-
-        //    Assert.IsInstanceOfType(viewResult, typeof(ViewResult));
-        //    Assert.AreEqual(string.Empty, viewResult.ViewName);
-        //}
-
-        //    [TestMethod()]
-        //    public void DeleteTest()
-        //    {
-        //        Appeals appeals = new Appeals();
-        //        appeals.Appeal_Id = 191;
-        //        appeals.DeadLine_DateTime = DateTime.Now;
-        //        appeals.Entry_DateTime = DateTime.Now;
-        //        appeals.Description = "Test123456Delete";
-
-        //        AppealsController appealsController = new AppealsController();
-        //        appealsController.Delete(191);
-
-
-        //        //var result = appealsController.Delete(191);
-        //        //Assert.AreNotEqual(appeals.Appeal_Id, null);
-        //    }
-        //}
-    }
+}
 }
