@@ -45,6 +45,50 @@ namespace AgileWorks.Controllers.Tests
         }
 
         [TestMethod()]
+        public void CreateTest2()
+        {
+            var today = DateTime.Now;
+            List<Appeals> allAppeals = new List<Appeals>();
+            List<Appeals> correctDateTimeAppeals = new List<Appeals>();
+            Appeals appeals = new Appeals();
+            appeals.Appeal_Id = 590;
+            appeals.DeadLine_DateTime = new DateTime(2020, 1, 19);
+            appeals.Entry_DateTime = DateTime.Now;
+            appeals.Description = "Test123456";
+
+            Appeals appeals2 = new Appeals();
+            appeals2.Appeal_Id = 501;
+            appeals2.DeadLine_DateTime = new DateTime(2017, 1, 19);
+            appeals2.Entry_DateTime = DateTime.Now;
+            appeals2.Description = "Testimine";
+
+
+            AppealsController appealsController = new AppealsController();
+            var result = appealsController.Create(appeals);
+            var result2 = appealsController.Create(appeals2);
+            allAppeals.Add(appeals);
+            allAppeals.Add(appeals2);
+
+            foreach (var item in allAppeals)
+            {
+                if (item.DeadLine_DateTime > today)
+                {
+                    correctDateTimeAppeals.Add(item);
+                }
+            }
+
+            Assert.AreEqual(appeals.Description, "Test123456");
+            Assert.AreEqual(appeals2.Description, "Testimine");
+            Assert.IsNotNull(appeals.ToString());
+            CollectionAssert.Contains(correctDateTimeAppeals, appeals);
+            CollectionAssert.DoesNotContain(correctDateTimeAppeals, appeals2);
+
+
+
+
+
+        }
+        [TestMethod()]
         public void DeleteTest()
         {
             Appeals appeals = new Appeals();
