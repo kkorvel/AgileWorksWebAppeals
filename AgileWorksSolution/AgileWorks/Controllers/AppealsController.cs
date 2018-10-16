@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace AgileWorks.Controllers
 {
@@ -10,7 +12,7 @@ namespace AgileWorks.Controllers
     {
         List<Appeals> appealsList = new List<Appeals>();
         // GET: Appeals
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
 
             using (AgileWorksWebAppealsDBEntities entities = new AgileWorksWebAppealsDBEntities())
@@ -18,8 +20,8 @@ namespace AgileWorks.Controllers
                 appealsList = entities.Appeals.ToList();
 
             }
-            
-            return View(appealsList.OrderByDescending(x => x.deadlineDatetime).ToList());
+
+            return View(appealsList.OrderByDescending(x => x.deadlineDatetime).ToList().ToPagedList(page ?? 1, 50));
         }
 
         // GET: Appeals/Create

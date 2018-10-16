@@ -1,4 +1,7 @@
-﻿@model IEnumerable<AgileWorks.Models.Appeals>
+﻿@using PagedList.Mvc;
+@using PagedList;
+
+@model IPagedList<AgileWorks.Models.Appeals>
 <link href="~/Content/appeals.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Index";
@@ -12,13 +15,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.description)
+            @Html.DisplayNameFor(model => model.First().description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.entryDatetime)
+            @Html.DisplayNameFor(model => model.First().entryDatetime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.deadlineDatetime)
+            @Html.DisplayNameFor(model => model.First().deadlineDatetime)
         </th>
         <th></th>
     </tr>
@@ -59,3 +62,5 @@
     }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AgileWorks.Models;
 
+
 namespace AgileWorks.Controllers.Tests
 {
     [TestClass()]
@@ -19,10 +20,10 @@ namespace AgileWorks.Controllers.Tests
         {
             Appeals appeals = new Appeals();
             AppealsController appealsController = new AppealsController();
-            ViewResult viewResult = appealsController.Index() as ViewResult;
+            ViewResult viewResult = appealsController.Index(5) as ViewResult;
 
             Assert.IsNotNull(viewResult.Model);
-            Assert.IsInstanceOfType(viewResult.Model, typeof(List<Appeals>));
+            Assert.IsInstanceOfType(viewResult.Model, typeof(PagedList.PagedList<Appeals>));
 
         }
 
