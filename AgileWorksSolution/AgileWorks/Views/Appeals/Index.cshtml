@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Entry_DateTime)
+            @Html.DisplayNameFor(model => model.entryDatetime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DeadLine_DateTime)
+            @Html.DisplayNameFor(model => model.deadlineDatetime)
         </th>
         <th></th>
     </tr>
@@ -29,7 +29,7 @@
         var now = DateTime.Now;
         var oneHour = DateTime.Now.AddHours(+1);
         string color;
-        if (item.DeadLine_DateTime >= now && item.DeadLine_DateTime <= oneHour || item.DeadLine_DateTime < now)
+        if (item.deadlineDatetime >= now && item.deadlineDatetime <= oneHour || item.deadlineDatetime < now)
         {
 
 
@@ -43,17 +43,17 @@
         }
         <tr>
             <td style="color: @color">
-                @Html.DisplayFor(modelItem => item.Description, new { htmlAttributes = new { @class = color } })
+                @Html.DisplayFor(modelItem => item.description, new { htmlAttributes = new { @class = color } })
             </td>
             <td style="color: @color">
-                @Html.DisplayFor(modelItem => item.Entry_DateTime, new { htmlAttributes = new { @class = color } })
+                @Html.DisplayFor(modelItem => item.entryDatetime, new { htmlAttributes = new { @class = color } })
             </td>
             <td style="color: @color">
-                @Html.DisplayFor(modelItem => item.DeadLine_DateTime, new { htmlAttributes = new { @class = color } })
+                @Html.DisplayFor(modelItem => item.deadlineDatetime, new { htmlAttributes = new { @class = color } })
             </td>
             <td>
-                
-                @Html.ActionLink("Mark as resolved appeal", "Delete", new { id = item.Appeal_Id })
+
+                @Html.ActionLink("Mark as resolved appeal", "Delete", new { id = item.appealId })
             </td>
         </tr>
     }

@@ -160,23 +160,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AgileWorksWebAppealsModel.Context.cs">
+    <Compile Include="Models\AgileWorksAppealsDatabaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AgileWorksWebAppealsModel.Context.tt</DependentUpon>
+      <DependentUpon>AgileWorksAppealsDatabaseModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AgileWorksWebAppealsModel.cs">
+    <Compile Include="Models\AgileWorksAppealsDatabaseModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AgileWorksWebAppealsModel.tt</DependentUpon>
+      <DependentUpon>AgileWorksAppealsDatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AgileWorksWebAppealsModel.Designer.cs">
+    <Compile Include="Models\AgileWorksAppealsDatabaseModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AgileWorksWebAppealsModel.edmx</DependentUpon>
+      <DependentUpon>AgileWorksAppealsDatabaseModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Appeals.cs">
-      <DependentUpon>AgileWorksWebAppealsModel.tt</DependentUpon>
+      <DependentUpon>AgileWorksAppealsDatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -190,27 +190,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\AgileWorksWebAppealsModel.Context.tt">
+    <Content Include="Models\AgileWorksAppealsDatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AgileWorksWebAppealsModel.edmx</DependentUpon>
-      <LastGenOutput>AgileWorksWebAppealsModel.Context.cs</LastGenOutput>
+      <DependentUpon>AgileWorksAppealsDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>AgileWorksAppealsDatabaseModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AgileWorksWebAppealsModel.tt">
+    <Content Include="Models\AgileWorksAppealsDatabaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AgileWorksWebAppealsModel.edmx</DependentUpon>
-      <LastGenOutput>AgileWorksWebAppealsModel.cs</LastGenOutput>
+      <DependentUpon>AgileWorksAppealsDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>AgileWorksAppealsDatabaseModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\AgileWorksWebAppealsModel.edmx">
+    <EntityDeploy Include="Models\AgileWorksAppealsDatabaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AgileWorksWebAppealsModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>AgileWorksAppealsDatabaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\AgileWorksWebAppealsModel.edmx.diagram">
-      <DependentUpon>AgileWorksWebAppealsModel.edmx</DependentUpon>
+    <Content Include="Models\AgileWorksAppealsDatabaseModel.edmx.diagram">
+      <DependentUpon>AgileWorksAppealsDatabaseModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\AgileWorksWebAppeals - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -224,7 +224,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -239,8 +241,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Appeals\Index.cshtml" />
-    <Content Include="Views\Appeals\Create.cshtml" />
     <Content Include="Views\Appeals\Delete.cshtml" />
+    <Content Include="Views\Appeals\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

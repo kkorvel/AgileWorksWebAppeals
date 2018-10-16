@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="13989ac3475d4e258918f74890f40c3c" Name="Diagram1">
+      <Diagram DiagramId="13bef8da8b9a4de08ba5e97cb6d2a35c" Name="Diagram1">
         <EntityTypeShape EntityType="AgileWorksWebAppealsDBModel.Appeals" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>

@@ -7,12 +7,12 @@
       <Schema Namespace="AgileWorksWebAppealsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Appeals">
           <Key>
-            <PropertyRef Name="Appeal_Id" />
+            <PropertyRef Name="appealId" />
           </Key>
-          <Property Name="Appeal_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="appealId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Entry_DateTime" Type="datetime" Nullable="false" />
-          <Property Name="DeadLine_DateTime" Type="datetime" Nullable="false" />
+          <Property Name="entryDatetime" Type="datetime" Nullable="false" />
+          <Property Name="deadlineDatetime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityContainer Name="AgileWorksWebAppealsDBModelStoreContainer">
           <EntitySet Name="Appeals" EntityType="Self.Appeals" Schema="dbo" store:Type="Tables" />
@@ -24,12 +24,12 @@
       <Schema Namespace="AgileWorksWebAppealsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Appeals">
           <Key>
-            <PropertyRef Name="Appeal_Id" />
+            <PropertyRef Name="appealId" />
           </Key>
-          <Property Name="Appeal_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Entry_DateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeadLine_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="appealId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="entryDatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="deadlineDatetime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityContainer Name="AgileWorksWebAppealsDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Appeals" EntityType="Self.Appeals" />
@@ -43,10 +43,10 @@
           <EntitySetMapping Name="Appeals">
             <EntityTypeMapping TypeName="AgileWorksWebAppealsDBModel.Appeals">
               <MappingFragment StoreEntitySet="Appeals">
-                <ScalarProperty Name="Appeal_Id" ColumnName="Appeal_Id" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Entry_DateTime" ColumnName="Entry_DateTime" />
-                <ScalarProperty Name="DeadLine_DateTime" ColumnName="DeadLine_DateTime" />
+                <ScalarProperty Name="appealId" ColumnName="appealId" />
+                <ScalarProperty Name="description" ColumnName="Description" />
+                <ScalarProperty Name="entryDatetime" ColumnName="entryDatetime" />
+                <ScalarProperty Name="deadlineDatetime" ColumnName="deadlineDatetime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,28 +7,27 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>Appeals</h4>
         <hr />
-
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DeadLine_DateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.deadlineDatetime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DeadLine_DateTime, new { placeholder = "mm/dd/yyyy hh:mm", @class = "form-input" })
-                @Html.ValidationMessageFor(model => model.DeadLine_DateTime, "", new { @class = "text-danger" })
-
+                @Html.TextBoxFor(model => model.deadlineDatetime, new { placeholder = "mm/dd/yyyy hh:mm", @class = "form-input" })
+                @Html.ValidationMessageFor(model => model.deadlineDatetime, "", new { @class = "text-danger" })
             </div>
         </div>
 

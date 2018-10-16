@@ -17,15 +17,16 @@ namespace AgileWorks.Models
     public partial class Appeals
     {
         [Required]
-        public int Appeal_Id { get; set; }
+        [DisplayName("AppealId")]
+        public int appealId { get; set; }
         [Required]
-        [DisplayName("Appeal description")]
-        public string Description { get; set; }
+        [DisplayName("Description")]
+        public string description { get; set; }
         [Required]
-        [DisplayName("Appeal Entry Time")]
-        public System.DateTime Entry_DateTime { get; set; }
+        [DisplayName("Entry DateTime")]
+        public System.DateTime entryDatetime { get; set; }
         [Required]
-        [DisplayName("Appeal Deadline")]
-        public System.DateTime DeadLine_DateTime { get; set; }
+        [DisplayName("Deadline DateTime")]
+        public System.DateTime deadlineDatetime { get; set; }
     }
 }
