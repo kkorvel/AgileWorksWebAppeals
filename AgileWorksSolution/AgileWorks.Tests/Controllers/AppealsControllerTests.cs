@@ -41,6 +41,7 @@ namespace AgileWorks.Controllers.Tests
             var result = appealsController.Create(appeals);
             var ifExists = agileWorksWebAppealsDBEntities.Appeals.Where(x => x.appealId == appeals.appealId).FirstOrDefault();
 
+
             Assert.IsNotNull(ifExists);
             Assert.AreEqual(appeals.description, ifExists.description);
         }

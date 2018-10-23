@@ -250,6 +250,7 @@
     <Content Include="Views\Appeals\Index.cshtml" />
     <Content Include="Views\Appeals\Delete.cshtml" />
     <Content Include="Views\Appeals\Create.cshtml" />
+    <Content Include="Views\Appeals\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

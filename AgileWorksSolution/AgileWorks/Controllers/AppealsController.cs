@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using System.Net;
 
 namespace AgileWorks.Controllers
 {
@@ -38,17 +39,14 @@ namespace AgileWorks.Controllers
 
             using (AgileWorksWebAppealsDBEntities agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities())
             {
-                if (ModelState.IsValid && appeals.deadlineDatetime >= now)
+                if (ModelState.IsValid)
                 {
-                    appeals.entryDatetime = DateTime.Now;
 
                     agileWorksDatabaseEntities.Appeals.Add(appeals);
                     agileWorksDatabaseEntities.SaveChanges();
                 }
-                else
+                else if (!ModelState.IsValid)
                 {
-
-                    ModelState.AddModelError("deadlineDatetime", "The deadline is in past!");
 
                     return View(appeals);
                 }
@@ -63,7 +61,17 @@ namespace AgileWorks.Controllers
         {
             using (AgileWorksWebAppealsDBEntities agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities())
             {
-                return View(agileWorksDatabaseEntities.Appeals.Where(x => x.appealId == id).First());
+                Appeals appeals = agileWorksDatabaseEntities.Appeals.Where(x => x.appealId == id).First();
+
+                if (appeals != null)
+                {
+                    return View(appeals);
+                }
+                else
+                {
+                    return RedirectToAction("Error");
+
+                }
             }
         }
 
@@ -75,12 +83,25 @@ namespace AgileWorks.Controllers
             using (AgileWorksWebAppealsDBEntities agileWorksDatabaseEntities = new AgileWorksWebAppealsDBEntities())
             {
                 Appeals appeal = agileWorksDatabaseEntities.Appeals.Where(x => x.appealId == id).FirstOrDefault();
-                agileWorksDatabaseEntities.Appeals.Remove(appeal);
-                agileWorksDatabaseEntities.SaveChanges();
+
+                if (appeal != null)
+                {
+                    agileWorksDatabaseEntities.Appeals.Remove(appeal);
+                    agileWorksDatabaseEntities.SaveChanges();
+                }
+                else
+                {
+                    return RedirectToAction("Error");
+                }
             }
 
             return RedirectToAction("Index");
 
+        }
+
+        public ActionResult Error()
+        {
+            return View();
         }
     }
 }

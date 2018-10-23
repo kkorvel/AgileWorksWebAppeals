@@ -16,17 +16,54 @@ namespace AgileWorks.Models
 
     public partial class Appeals
     {
+        private DateTime currentDateTime = DateTime.Now;
+
+
         [Required]
         [DisplayName("AppealId")]
-        public int appealId { get; set; }
+        public int appealId
+        {
+            get; set;
+        }
+
         [Required]
         [DisplayName("Description")]
-        public string description { get; set; }
+        public string description
+        {
+            get; set;
+        }
+
         [Required]
         [DisplayName("Entry DateTime")]
-        public System.DateTime entryDatetime { get; set; }
+        [DataType(DataType.DateTime)]
+        public System.DateTime entryDatetime
+        {
+            get
+            {
+                return currentDateTime;
+            }
+            set
+            {
+                currentDateTime = value;
+            }
+        }
+
+
         [Required]
         [DisplayName("Deadline DateTime")]
-        public System.DateTime deadlineDatetime { get; set; }
+        [DataType(DataType.DateTime)]
+        [MyDate(ErrorMessage ="Deadline is in past!")]
+        public System.DateTime deadlineDatetime
+        {
+            get; set;
+        }
+    }
+    public class MyDateAttribute : ValidationAttribute
+    {
+        public override bool IsValid(object value)
+        {
+            DateTime futureDateTime = Convert.ToDateTime(value);
+            return futureDateTime >= DateTime.Now;
+        }
     }
 }
