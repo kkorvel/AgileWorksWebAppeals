@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AgileWorks.Models;
-
+using Moq;
 
 namespace AgileWorks.Controllers.Tests
 {
@@ -30,6 +30,7 @@ namespace AgileWorks.Controllers.Tests
         [TestMethod()]
         public void TestIfFutureAppealExists()
         {
+
             AgileWorksWebAppealsDBEntities agileWorksWebAppealsDBEntities = new AgileWorksWebAppealsDBEntities();
 
             Appeals appeals = new Appeals();
@@ -44,6 +45,8 @@ namespace AgileWorks.Controllers.Tests
 
             Assert.IsNotNull(ifExists);
             Assert.AreEqual(appeals.description, ifExists.description);
+
+
         }
 
 
