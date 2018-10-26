@@ -50,6 +50,7 @@ namespace AgileWorks.Controllers.Tests
 
         }
         [TestMethod()]
+        [ExpectedException(typeof(DbEntityValidationException), "Deadline is in past!")]
         public void TestIfPastAppealCanBeAdded()
         {
 
@@ -61,31 +62,9 @@ namespace AgileWorks.Controllers.Tests
             appeals.description = "Test123456123456789";
 
             AppealsController appealsController = new AppealsController();
-            try
-            {
 
             var result = appealsController.Create(appeals);
-            }
-            catch (DbEntityValidationException ex)
-            {
-
-                foreach (var error in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in error.ValidationErrors)
-                    {
-                        string errorMessage = validationError.ErrorMessage;
-                        Assert.IsNotNull(errorMessage);
-                    }
-                }
-            }
-
-            
-
-            
-
-
         }
-
 
         [TestMethod()]
         public void DeleteTest()
