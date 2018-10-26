@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using AgileWorks.Models;
 using Moq;
+using System.Data.Entity.Validation;
 
 namespace AgileWorks.Controllers.Tests
 {
@@ -45,6 +46,42 @@ namespace AgileWorks.Controllers.Tests
 
             Assert.IsNotNull(ifExists);
             Assert.AreEqual(appeals.description, ifExists.description);
+
+
+        }
+        [TestMethod()]
+        public void TestIfPastAppealCanBeAdded()
+        {
+
+            AgileWorksWebAppealsDBEntities agileWorksWebAppealsDBEntities = new AgileWorksWebAppealsDBEntities();
+
+            Appeals appeals = new Appeals();
+            appeals.deadlineDatetime = new DateTime(1996, 1, 19);
+            appeals.entryDatetime = DateTime.Now;
+            appeals.description = "Test123456123456789";
+
+            AppealsController appealsController = new AppealsController();
+            try
+            {
+
+            var result = appealsController.Create(appeals);
+            }
+            catch (DbEntityValidationException ex)
+            {
+
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in error.ValidationErrors)
+                    {
+                        string errorMessage = validationError.ErrorMessage;
+                        Assert.IsNotNull(errorMessage);
+                    }
+                }
+            }
+
+            
+
+            
 
 
         }
