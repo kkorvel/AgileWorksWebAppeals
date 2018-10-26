@@ -51,24 +51,6 @@ namespace AgileWorks.Controllers.Tests
 
 
         [TestMethod()]
-        public void TestIfPastTimeAppealDoesNotExist()
-        {
-            AgileWorksWebAppealsDBEntities agileWorksWebAppealsDBEntities = new AgileWorksWebAppealsDBEntities();
-
-            Appeals appeals = new Appeals();
-            appeals.deadlineDatetime = new DateTime(1996, 1, 19);
-            appeals.entryDatetime = DateTime.Now;
-            appeals.description = "Test123456123456789";
-
-            AppealsController appealsController = new AppealsController();
-            var result = appealsController.Create(appeals);
-            var ifExists = agileWorksWebAppealsDBEntities.Appeals.Where(x => x.appealId == appeals.appealId).FirstOrDefault();
-
-            Assert.IsNull(ifExists);
-
-        }
-
-        [TestMethod()]
         public void DeleteTest()
         {
             AgileWorksWebAppealsDBEntities agileWorksWebAppealsDBEntities = new AgileWorksWebAppealsDBEntities();

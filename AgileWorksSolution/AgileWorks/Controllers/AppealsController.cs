@@ -69,7 +69,7 @@ namespace AgileWorks.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Error");
+                    return new HttpNotFoundResult("Appeal not found!");
 
                 }
             }
@@ -91,7 +91,7 @@ namespace AgileWorks.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Error");
+                    return new HttpNotFoundResult("Appeal not found!");
                 }
             }
 
@@ -99,9 +99,6 @@ namespace AgileWorks.Controllers
 
         }
 
-        public ActionResult Error()
-        {
-            return View();
-        }
+
     }
 }

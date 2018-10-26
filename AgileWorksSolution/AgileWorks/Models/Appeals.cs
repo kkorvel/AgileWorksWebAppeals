@@ -19,21 +19,21 @@ namespace AgileWorks.Models
         private DateTime currentDateTime = DateTime.Now;
 
 
-        [Required]
+        [Required(ErrorMessage = "Appeal id is required.")]
         [DisplayName("AppealId")]
         public int appealId
         {
             get; set;
         }
 
-        [Required]
+        [Required(ErrorMessage = "Description is required.")]
         [DisplayName("Description")]
         public string description
         {
             get; set;
         }
 
-        [Required]
+        [Required(ErrorMessage ="Entry datetime is required.")]
         [DisplayName("Entry DateTime")]
         [DataType(DataType.DateTime)]
         public System.DateTime entryDatetime
@@ -49,7 +49,7 @@ namespace AgileWorks.Models
         }
 
 
-        [Required]
+        [Required(ErrorMessage ="Deadline is required.")]
         [DisplayName("Deadline DateTime")]
         [DataType(DataType.DateTime)]
         [MyDate(ErrorMessage ="Deadline is in past!")]
