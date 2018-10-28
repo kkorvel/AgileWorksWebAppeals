@@ -9,22 +9,24 @@
 
 namespace AgileWorks.Models
 {
-    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class AgileWorksWebAppealsDBEntities : DbContext
+
     {
         public AgileWorksWebAppealsDBEntities()
             : base("name=AgileWorksWebAppealsDBEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Appeals> Appeals { get; set; }
     }
+
 }
+

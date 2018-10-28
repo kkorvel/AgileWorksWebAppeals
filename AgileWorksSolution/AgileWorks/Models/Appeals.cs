@@ -10,7 +10,6 @@
 namespace AgileWorks.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
@@ -51,7 +50,6 @@ namespace AgileWorks.Models
 
         [Required(ErrorMessage ="Deadline is required.")]
         [DisplayName("Deadline DateTime")]
-        [DataType(DataType.DateTime)]
         [MyDate(ErrorMessage ="Deadline is in past!")]
         public System.DateTime deadlineDatetime
         {
